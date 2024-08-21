@@ -22,13 +22,13 @@ class _BaseClient implements BaseClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<void> login(Map<String, dynamic> body) async {
+  Future<LoginResponseEntity> login(LoginRequest body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body);
-    final _options = _setStreamType<void>(Options(
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<LoginResponseEntity>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -44,17 +44,25 @@ class _BaseClient implements BaseClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    await _dio.fetch<void>(_options);
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late LoginResponseEntity _value;
+    try {
+      _value = LoginResponseEntity.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   @override
-  Future<void> register(Map<String, dynamic> body) async {
+  Future<UserEntity> register(RegisterRequest body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body);
-    final _options = _setStreamType<void>(Options(
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<UserEntity>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -70,7 +78,15 @@ class _BaseClient implements BaseClient {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    await _dio.fetch<void>(_options);
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late UserEntity _value;
+    try {
+      _value = UserEntity.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

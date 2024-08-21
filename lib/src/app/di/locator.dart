@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:messenger_clone_flutter/src/app/bloc/app_bloc.dart';
 import 'package:messenger_clone_flutter/src/app/network/clients/base/build_dio_client.dart';
 import 'package:messenger_clone_flutter/src/app/network/clients/base_client.dart';
 import 'package:messenger_clone_flutter/src/app/resource/constants/env_constants.dart';
@@ -13,4 +14,6 @@ Future<void> setupLocator() async {
   final dio = buildDioClient(EnvConstants.baseApiURL);
 
   locator.registerSingleton<BaseClient>(BaseClient(dio));
+
+  locator.registerLazySingleton<AppBloc>(() => AppBloc());
 }

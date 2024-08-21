@@ -8,21 +8,38 @@ class CacheManager {
   static CacheManager? _instance;
 
   CacheManager._() : _secureStorage = const FlutterSecureStorage();
-
-  factory CacheManager() => _instance ??= CacheManager._();
+  // Avoid self instance
+  static CacheManager get instance => _instance ??= CacheManager._();
 
   final FlutterSecureStorage _secureStorage;
 
-  Future<void> write(
-      {required CacheManagerItem key, required String value}) async {
+  Future<void> setString({required CacheKey key, required String value}) async {
     await _secureStorage.write(key: key.name, value: value);
   }
 
-  Future<String?> read({required CacheManagerItem key}) async {
+  Future<String?> getString({required CacheKey key}) async {
     return await _secureStorage.read(key: key.name);
   }
 
-  Future<void> delete({required CacheManagerItem key}) async {
+  Future<void> setBool({required CacheKey key, required bool value}) async {
+    await _secureStorage.write(key: key.name, value: value.toString());
+  }
+
+  Future<bool?> getBool({required CacheKey key}) async {
+    final value = await _secureStorage.read(key: key.name);
+    return value == null ? null : value == 'true';
+  }
+
+  Future<void> setNum({required CacheKey key, required num value}) async {
+    await _secureStorage.write(key: key.name, value: value.toString());
+  }
+
+  Future<num?> getNum({required CacheKey key}) async {
+    final value = await _secureStorage.read(key: key.name);
+    return value == null ? null : num.parse(value);
+  }
+
+  Future<void> delete({required CacheKey key}) async {
     await _secureStorage.delete(key: key.name);
   }
 
@@ -31,6 +48,4 @@ class CacheManager {
   }
 }
 
-enum CacheManagerItem {
-  accessToken,
-}
+enum CacheKey { accessToken, isDarkMode, firstTime }
