@@ -12,8 +12,45 @@
 **Nasıl Çalıştırırsın?**
 
 1. **Klonla:** `git clone https://github.com/mavzerbay/messenger-clone.git`
-2. **Bağımlılıkları Yükle:** `flutter pub get`
-3. **Çalıştır:** `flutter run`
+2. **.env Dosyasını Oluştur:** Projenin kök dizinine `.env` adında yeni bir dosya oluştur. Bu dosyaya API anahtarların, veritabanı bağlantı bilgilerinin gibi hassas bilgileri ekleyebilirsin.
+3. **Bağımlılıkları Yükle:** `flutter pub get`
+4. **Çalıştır:** `flutter run --dart-define-from-file=.env`
+
+*Örnek launch.json:*
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "messenger_clone_flutter",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "toolArgs": ["--dart-define-from-file", ".env"]
+    },
+    {
+      "name": "messenger_clone_flutter (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "messenger_clone_flutter (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    }
+  ]
+}
+```
+
+**.env Dosyası Hakkında**
+
+`.env` dosyası, uygulama içindeki sabit değerleri (API anahtarları, veritabanı bağlantı bilgileri gibi) saklamak için kullanılan bir dosyadır. Bu sayede bu değerleri direkt kodun içine yazmak zorunda kalmazsın ve güvenliği artırırsın.
+
+**Ortam Değişkenlerine Erişmek**
+
+`.env` dosyasına hangi key bilgilerini ekleyeceğini görmek için `lib/src/app/resource/constants/env_constants.dart` dosyasını incele.
 
 **Teknolojiler**
 
