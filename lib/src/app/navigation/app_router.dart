@@ -17,7 +17,7 @@ class AppRouter extends RootStackRouter {
         ),
         CustomRoute(
           page: DashboardRoute.page,
-          transitionsBuilder: TransitionsBuilders.slideTop,
+          transitionsBuilder: TransitionsBuilders.slideBottom,
           durationInMilliseconds: 300,
         ),
       ];

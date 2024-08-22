@@ -63,9 +63,11 @@ class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
         if (response.token != null) {
           CacheManager.instance
               .setString(key: CacheKey.accessToken, value: response.token!);
-          router.pushAndPopUntil(const DashboardRoute(),
-              predicate: (route) => false);
           Snackbars.showSuccess(message: 'Login success');
+          router.pushAndPopUntil(
+            const DashboardRoute(),
+            predicate: (route) => false,
+          );
         } else {
           Snackbars.showError(message: 'Login failed');
         }

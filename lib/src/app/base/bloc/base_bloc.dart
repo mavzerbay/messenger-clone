@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
-import 'package:messenger_clone_flutter/src/app/navigation/app_router.dart';
+import 'package:messenger_clone_flutter/src/app/navigation/app_router.dart'
+    as ar;
 
 import '../../../shared/mixin/event_transformer_mixin.dart';
 import '../../bloc/app_bloc.dart';
@@ -19,7 +20,7 @@ abstract class BaseBlocDelegate<E extends BaseBlocEvent,
     S extends BaseBlocState> extends Bloc<E, S> {
   BaseBlocDelegate(super.initialState);
 
-  late final AppRouter router;
+  final ar.AppRouter router = ar.router;
   late final AppBloc appBloc;
 
   final logger = Logger(
