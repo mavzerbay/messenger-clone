@@ -22,6 +22,7 @@ mixin _$AppEvent {
     required TResult Function(bool visibility, String? message)
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
+    required TResult Function(dynamic isForce) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$AppEvent {
     TResult? Function(bool visibility, String? message)?
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
+    TResult? Function(dynamic isForce)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$AppEvent {
     TResult Function(bool visibility, String? message)?
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
+    TResult Function(dynamic isForce)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$AppEvent {
     required TResult Function(_LoadingVisibilityEmitted value)
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_SignOut value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$AppEvent {
     TResult? Function(_LoadingVisibilityEmitted value)?
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult? Function(_SignOut value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +67,7 @@ mixin _$AppEvent {
     TResult Function(_Started value)? started,
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +132,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(bool visibility, String? message)
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
+    required TResult Function(dynamic isForce) signOut,
   }) {
     return started();
   }
@@ -137,6 +144,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(bool visibility, String? message)?
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
+    TResult? Function(dynamic isForce)? signOut,
   }) {
     return started?.call();
   }
@@ -148,6 +156,7 @@ class _$StartedImpl implements _Started {
     TResult Function(bool visibility, String? message)?
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
+    TResult Function(dynamic isForce)? signOut,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -163,6 +172,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_LoadingVisibilityEmitted value)
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return started(this);
   }
@@ -174,6 +184,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_LoadingVisibilityEmitted value)?
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return started?.call(this);
   }
@@ -184,6 +195,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -278,6 +290,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
     required TResult Function(bool visibility, String? message)
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
+    required TResult Function(dynamic isForce) signOut,
   }) {
     return loadingVisibilityEmitted(visibility, message);
   }
@@ -289,6 +302,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
     TResult? Function(bool visibility, String? message)?
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
+    TResult? Function(dynamic isForce)? signOut,
   }) {
     return loadingVisibilityEmitted?.call(visibility, message);
   }
@@ -300,6 +314,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
     TResult Function(bool visibility, String? message)?
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
+    TResult Function(dynamic isForce)? signOut,
     required TResult orElse(),
   }) {
     if (loadingVisibilityEmitted != null) {
@@ -315,6 +330,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
     required TResult Function(_LoadingVisibilityEmitted value)
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return loadingVisibilityEmitted(this);
   }
@@ -326,6 +342,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
     TResult? Function(_LoadingVisibilityEmitted value)?
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return loadingVisibilityEmitted?.call(this);
   }
@@ -336,6 +353,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
     TResult Function(_Started value)? started,
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (loadingVisibilityEmitted != null) {
@@ -399,6 +417,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
     required TResult Function(bool visibility, String? message)
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
+    required TResult Function(dynamic isForce) signOut,
   }) {
     return toggleThemeMode();
   }
@@ -410,6 +429,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
     TResult? Function(bool visibility, String? message)?
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
+    TResult? Function(dynamic isForce)? signOut,
   }) {
     return toggleThemeMode?.call();
   }
@@ -421,6 +441,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
     TResult Function(bool visibility, String? message)?
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
+    TResult Function(dynamic isForce)? signOut,
     required TResult orElse(),
   }) {
     if (toggleThemeMode != null) {
@@ -436,6 +457,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
     required TResult Function(_LoadingVisibilityEmitted value)
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_SignOut value) signOut,
   }) {
     return toggleThemeMode(this);
   }
@@ -447,6 +469,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
     TResult? Function(_LoadingVisibilityEmitted value)?
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return toggleThemeMode?.call(this);
   }
@@ -457,6 +480,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
     TResult Function(_Started value)? started,
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
     if (toggleThemeMode != null) {
@@ -468,6 +492,155 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
 
 abstract class _ToggleThemeMode implements AppEvent {
   const factory _ToggleThemeMode() = _$ToggleThemeModeImpl;
+}
+
+/// @nodoc
+abstract class _$$SignOutImplCopyWith<$Res> {
+  factory _$$SignOutImplCopyWith(
+          _$SignOutImpl value, $Res Function(_$SignOutImpl) then) =
+      __$$SignOutImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({dynamic isForce});
+}
+
+/// @nodoc
+class __$$SignOutImplCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$SignOutImpl>
+    implements _$$SignOutImplCopyWith<$Res> {
+  __$$SignOutImplCopyWithImpl(
+      _$SignOutImpl _value, $Res Function(_$SignOutImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isForce = freezed,
+  }) {
+    return _then(_$SignOutImpl(
+      isForce: freezed == isForce ? _value.isForce! : isForce,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SignOutImpl implements _SignOut {
+  const _$SignOutImpl({this.isForce = false});
+
+  @override
+  @JsonKey()
+  final dynamic isForce;
+
+  @override
+  String toString() {
+    return 'AppEvent.signOut(isForce: $isForce)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignOutImpl &&
+            const DeepCollectionEquality().equals(other.isForce, isForce));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isForce));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignOutImplCopyWith<_$SignOutImpl> get copyWith =>
+      __$$SignOutImplCopyWithImpl<_$SignOutImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool visibility, String? message)
+        loadingVisibilityEmitted,
+    required TResult Function() toggleThemeMode,
+    required TResult Function(dynamic isForce) signOut,
+  }) {
+    return signOut(isForce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(bool visibility, String? message)?
+        loadingVisibilityEmitted,
+    TResult? Function()? toggleThemeMode,
+    TResult? Function(dynamic isForce)? signOut,
+  }) {
+    return signOut?.call(isForce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool visibility, String? message)?
+        loadingVisibilityEmitted,
+    TResult Function()? toggleThemeMode,
+    TResult Function(dynamic isForce)? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut(isForce);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_LoadingVisibilityEmitted value)
+        loadingVisibilityEmitted,
+    required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_SignOut value) signOut,
+  }) {
+    return signOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_LoadingVisibilityEmitted value)?
+        loadingVisibilityEmitted,
+    TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult? Function(_SignOut value)? signOut,
+  }) {
+    return signOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_SignOut value)? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignOut implements AppEvent {
+  const factory _SignOut({final dynamic isForce}) = _$SignOutImpl;
+
+  dynamic get isForce;
+  @JsonKey(ignore: true)
+  _$$SignOutImplCopyWith<_$SignOutImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

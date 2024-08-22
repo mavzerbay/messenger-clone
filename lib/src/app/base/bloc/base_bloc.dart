@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
-import 'package:messenger_clone_flutter/src/app/navigation/app_router.dart'
-    as ar;
+import 'package:messenger_clone_flutter/src/app/navigation/app_navigator_impl.dart';
+import 'package:messenger_clone_flutter/src/domain/domain/app_navigator.dart';
+import 'package:messenger_clone_flutter/src/shared/mixin/log_mixin.dart';
 
 import '../../../shared/mixin/event_transformer_mixin.dart';
 import '../../bloc/app_bloc.dart';
@@ -17,17 +17,22 @@ abstract class BaseBloc<E extends BaseBlocEvent, S extends BaseBlocState>
 }
 
 abstract class BaseBlocDelegate<E extends BaseBlocEvent,
-    S extends BaseBlocState> extends Bloc<E, S> {
+    S extends BaseBlocState> extends Bloc<E, S> with LogMixin {
   BaseBlocDelegate(super.initialState);
 
-  final ar.AppRouter router = ar.router;
+  final AppNavigator navigator = AppNavigatorImpl.instance;
   late final AppBloc appBloc;
 
-  final logger = Logger(
-    printer: PrettyPrinter(),
-  );
-
   final cacheManager = CacheManager.instance;
+
+  @override
+  void add(E event) {
+    if (!isClosed) {
+      super.add(event);
+    } else {
+      logE('Cannot add new event $event because $runtimeType was closed');
+    }
+  }
 
   void showLoading({String? message}) {
     appBloc.add(

@@ -4,7 +4,6 @@ import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc.dart';
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_event.dart';
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_state.dart';
 import 'package:messenger_clone_flutter/src/app/base/cache/cache_manager.dart';
-import 'package:messenger_clone_flutter/src/app/components/snackbars.dart';
 import 'package:messenger_clone_flutter/src/app/navigation/app_router.gr.dart';
 import 'package:messenger_clone_flutter/src/data/models/login_request.dart';
 import 'package:messenger_clone_flutter/src/domain/repositories/auth_service.dart';
@@ -56,6 +55,7 @@ class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
     await runBlocCatching(
       doOnSubscribe: () async => emit(state.copyWith(submitLock: true)),
       action: () async {
+        await Future.delayed(const Duration(seconds: 2));
         final response = await _authService.login(
           LoginRequest.fromJson(formGroup.value),
         );
@@ -63,18 +63,19 @@ class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
         if (response.token != null) {
           CacheManager.instance
               .setString(key: CacheKey.accessToken, value: response.token!);
-          Snackbars.showSuccess(message: 'Login success');
-          router.pushAndPopUntil(
+          navigator.showSuccessSnackBar('Login success');
+          navigator.pushAndPopUntil(
             const DashboardRoute(),
             predicate: (route) => false,
           );
         } else {
-          Snackbars.showError(message: 'Login failed');
+          navigator.showErrorSnackBar('Login failed');
         }
       },
+      handleLoading: false,
       doOnEventCompleted: () async => emit(state.copyWith(submitLock: false)),
       doOnError: (e) async {
-        Snackbars.showError(message: 'Login failed');
+        navigator.showErrorSnackBar('Login failed');
       },
     );
   }

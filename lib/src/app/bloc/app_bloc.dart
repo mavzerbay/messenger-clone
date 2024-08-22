@@ -4,6 +4,7 @@ import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc.dart';
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_event.dart';
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_state.dart';
 import 'package:messenger_clone_flutter/src/app/base/cache/cache_manager.dart';
+import 'package:messenger_clone_flutter/src/app/navigation/app_router.gr.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
@@ -23,6 +24,10 @@ class AppBloc extends BaseBloc<AppEvent, AppState> {
       _onToggleThemeMode,
       transformer: log(),
     );
+    on<_SignOut>(
+      _onSignOut,
+      transformer: log(),
+    );
   }
 
   Future<void> _onStarted(_Started event, Emitter<AppState> emit) async {
@@ -35,8 +40,16 @@ class AppBloc extends BaseBloc<AppEvent, AppState> {
           isDarkMode: isDarkMode ?? false,
           firstTimeOnApp: firstTime ?? true,
         ));
-        
+
         cacheManager.setBool(key: CacheKey.firstTime, value: false);
+
+        final token = await cacheManager.getString(key: CacheKey.accessToken);
+
+        if (token != null) {
+          navigator.replace(const DashboardRoute());
+        } else {
+          navigator.replace(const LoginRoute());
+        }
       },
       handleLoading: false,
     );
@@ -61,6 +74,24 @@ class AppBloc extends BaseBloc<AppEvent, AppState> {
       state.copyWith(
         isDarkMode: !state.isDarkMode,
       ),
+    );
+  }
+
+  Future<void> _onSignOut(_SignOut event, Emitter<AppState> emit) async {
+    await runBlocCatching(
+      action: () async {
+        // if (!event.isForce) {
+        //   final isConfirmed = await (
+        //     title: 'Sign Out',
+        //     message: 'Are you sure you want to sign out?',
+        //   );
+
+        //   if (!isConfirmed) return;
+        // }
+        await cacheManager.delete(key: CacheKey.accessToken);
+        navigator.replace(const LoginRoute());
+      },
+      handleLoading: false,
     );
   }
 }

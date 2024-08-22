@@ -32,6 +32,8 @@ class MainApp extends StatelessWidget {
               'The password must be at least 8 characters long',
         },
         child: BlocBuilder<AppBloc, AppState>(
+          buildWhen: (previous, current) =>
+              previous.isDarkMode != current.isDarkMode,
           builder: (context, state) {
             return MaterialApp.router(
               title: 'Messenger Clone',
@@ -44,12 +46,18 @@ class MainApp extends StatelessWidget {
                     textScaler: const TextScaler.linear(1.0),
                   ),
                   child: Scaffold(
-                    body: Stack(
-                      children: [
-                        child ?? const SizedBox.shrink(),
-                        if (state.showLoading)
-                          _CustomLoader(state.loadingMessage),
-                      ],
+                    body: BlocBuilder<AppBloc, AppState>(
+                      buildWhen: (previous, current) =>
+                          previous.showLoading != current.showLoading,
+                      builder: (context, state) {
+                        return Stack(
+                          children: [
+                            child ?? const SizedBox.shrink(),
+                            if (state.showLoading)
+                              _CustomLoader(state.loadingMessage),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 );
@@ -59,7 +67,7 @@ class MainApp extends StatelessWidget {
               ),
               routeInformationParser: router.defaultRouteParser(),
               color: Colors.blue[900],
-              themeMode: ThemeMode.dark,
+              themeMode: state.isDarkMode ? ThemeMode.dark : ThemeMode.light,
               theme: ThemeData(
                 useMaterial3: true,
                 colorSchemeSeed: Colors.blue[900],

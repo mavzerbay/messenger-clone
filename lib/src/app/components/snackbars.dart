@@ -1,91 +1,138 @@
 import 'package:flutter/material.dart';
-import 'package:messenger_clone_flutter/src/app/navigation/app_router.dart';
+import 'package:messenger_clone_flutter/src/shared/extensions/context_extension.dart';
 
 class Snackbars {
-  static void showSuccess(
-      {String title = 'Success', String message = '', SnackBarAction? action}) {
-    final messengerState =
-        ScaffoldMessenger.maybeOf(router.navigatorKey.currentContext!);
-    if (messengerState == null) {
-      return;
-    }
-    messengerState.hideCurrentSnackBar();
-    messengerState.showSnackBar(
-      _getSnackbar(title, message, Colors.green, action),
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> success(
+    BuildContext context,
+    String message, {
+    String title = 'Success',
+    Duration? duration,
+  }) {
+    final snackbar = _buildSnackbar(
+      title,
+      context,
+      message,
+      duration,
+      const Color(0xff22C55E),
     );
+
+    return ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
-  static void showError(
-      {String title = 'Error', String message = '', SnackBarAction? action}) {
-    final messengerState =
-        ScaffoldMessenger.maybeOf(router.navigatorKey.currentContext!);
-    if (messengerState == null) {
-      return;
-    }
-    messengerState.hideCurrentSnackBar();
-    messengerState.showSnackBar(
-      _getSnackbar(title, message, Colors.red, action),
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> info(
+    BuildContext context,
+    String message, {
+    String title = 'Info',
+    Duration? duration,
+  }) {
+    final snackbar = _buildSnackbar(
+      title,
+      context,
+      message,
+      duration,
+      const Color(0xff17a2b8),
     );
+
+    return ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
-  static void showInfo(
-      {String title = 'Info', String message = '', SnackBarAction? action}) {
-    final messengerState =
-        ScaffoldMessenger.maybeOf(router.navigatorKey.currentContext!);
-    if (messengerState == null) {
-      return;
-    }
-    messengerState.hideCurrentSnackBar();
-    messengerState.showSnackBar(
-      _getSnackbar(title, message, Colors.blue, action),
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> error(
+    BuildContext context,
+    String message, {
+    String title = 'Error',
+    Duration? duration,
+  }) {
+    final snackbar = _buildSnackbar(
+      title,
+      context,
+      message,
+      duration,
+      const Color(0xffF44336),
     );
+
+    return ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
-  static void showWarning(
-      {String title = 'Warning', String message = '', SnackBarAction? action}) {
-    final messengerState =
-        ScaffoldMessenger.maybeOf(router.navigatorKey.currentContext!);
-    if (messengerState == null) {
-      return;
-    }
-    messengerState.hideCurrentSnackBar();
-    messengerState.showSnackBar(
-      _getSnackbar(title, message, Colors.orange, action),
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> warning(
+    BuildContext context,
+    String message, {
+    String title = 'Warning',
+    Duration? duration,
+  }) {
+    final snackbar = _buildSnackbar(
+      title,
+      context,
+      message,
+      duration,
+      const Color(0xffFFC107),
     );
+
+    return ScaffoldMessenger.of(context).showSnackBar(snackbar);
   }
 
-  static SnackBar _getSnackbar(
-      String title, String message, Color color, SnackBarAction? action) {
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> show(
+    BuildContext context,
+    String message, {
+    String title = 'Info',
+    Duration? duration,
+    Color backgroundColor = const Color(0xff17a2b8),
+  }) {
+    final snackbar = _buildSnackbar(
+      title,
+      context,
+      message,
+      duration,
+      backgroundColor,
+    );
+
+    return ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  }
+
+  static SnackBar _buildSnackbar(
+    String title,
+    BuildContext context,
+    String message,
+    Duration? duration,
+    Color backgroundColor,
+  ) {
     return SnackBar(
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+      content: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+          const Icon(
+            Icons.check_circle_outline,
+            size: 24,
+            color: Colors.white,
           ),
-          const SizedBox(height: 5),
-          Text(
-            message,
-            style: const TextStyle(
-              color: Colors.white,
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: context.textTheme.titleMedium!.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  message,
+                  style: context.textTheme.bodyMedium!.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
       ),
-      backgroundColor: color,
-      action: action,
-      duration: const Duration(seconds: 2),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       behavior: SnackBarBehavior.floating,
-      dismissDirection: DismissDirection.horizontal,
-      margin: const EdgeInsets.all(10.0),
+      backgroundColor: backgroundColor,
+      duration: duration ?? const Duration(seconds: 2),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
     );
   }
 }

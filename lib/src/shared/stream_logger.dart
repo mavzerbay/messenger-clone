@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:logger/logger.dart';
+import 'package:messenger_clone_flutter/src/app/di/locator.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 extension StreamExt<T> on Stream<T> {
   Stream<T> log(
@@ -11,38 +12,34 @@ extension StreamExt<T> on Stream<T> {
     bool logOnDone = false,
     bool logOnCancel = false,
   }) {
-    final logger = Logger(
-      printer: PrettyPrinter(),
-    );
+    final logger = locator<Talker>();
+
     return doOnListen(() {
       if (kDebugMode || logOnListen) {
-        logger.d(
+        logger.debug(
           '▶️ $name onSubscribed ',
-          time: DateTime.now(),
         );
       }
     }).doOnData((event) {
       if (kDebugMode || logOnData) {
-        logger.d('🔵 $name onEvent : $event', time: DateTime.now());
+        logger.debug('🔵 $name onEvent : $event');
       }
     }).doOnCancel(() {
       if (kDebugMode || logOnCancel) {
-        logger.d('🟡 $name onCanceled ', time: DateTime.now());
+        logger.debug('🟡 $name onCanceled ');
       }
-    }).doOnError((e, _) {
+    }).doOnError((e, st) {
       if (kDebugMode || logOnError) {
-        logger.e(
+        logger.error(
           '🔴 $name onError ',
-          error: e,
-          stackTrace: _,
-          time: DateTime.now(),
+          e,
+          st,
         );
       }
     }).doOnDone(() {
       if (kDebugMode || logOnDone) {
-        logger.d(
+        logger.debug(
           '🟢 $name onCompleted',
-          time: DateTime.now(),
         );
       }
     });

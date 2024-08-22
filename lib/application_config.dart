@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:messenger_clone_flutter/src/app/bloc/app_bloc.dart';
 import 'package:messenger_clone_flutter/src/app/resource/constants/env_constants.dart';
 
 import 'src/app/base/bloc/app_bloc_observer.dart';
@@ -19,7 +20,6 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-
 abstract class ApplicationConfig extends Config {}
 
 class AppConfig extends ApplicationConfig {
@@ -33,7 +33,9 @@ class AppConfig extends ApplicationConfig {
   Future<void> config() async {
     WidgetsFlutterBinding.ensureInitialized();
     await setupLocator();
-    
+
+    locator<AppBloc>().add(const AppEvent.started());
+
     EnvConstants.init();
 
     Intl.defaultLocale = 'en';

@@ -5,6 +5,7 @@ import 'package:messenger_clone_flutter/src/app/base/base_page.dart';
 import 'package:messenger_clone_flutter/src/shared/extensions/context_extension.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../components/animated_button.dart';
 import '../../components/inputs/text_input_field.dart';
 import '../../navigation/app_router.gr.dart';
 import 'bloc/login_bloc.dart';
@@ -86,7 +87,7 @@ class _LoginPageState extends BasePageState<LoginPage, LoginBloc> {
                     height: context.width * .075,
                   ),
                   ReactiveFormConsumer(
-                    builder: (context, form, child) => ElevatedButton(
+                    builder: (context, form, child) => AnimatedButton(
                       onPressed: form.valid
                           ? () => bloc.add(const LoginEvent.submit())
                           : null,
@@ -97,8 +98,9 @@ class _LoginPageState extends BasePageState<LoginPage, LoginBloc> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child:
-                          Text('Log In', style: context.textTheme.titleMedium),
+                      isLoading: state.submitLock,
+                      child: Text('Log In',
+                          style: context.textTheme.titleMedium),
                     ),
                   ),
                   SizedBox(

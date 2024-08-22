@@ -3,6 +3,7 @@ import 'package:messenger_clone_flutter/src/app/bloc/app_bloc.dart';
 import 'package:messenger_clone_flutter/src/app/network/clients/base/build_dio_client.dart';
 import 'package:messenger_clone_flutter/src/app/network/clients/base_client.dart';
 import 'package:messenger_clone_flutter/src/app/resource/constants/env_constants.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 import '../navigation/app_router.dart';
 
@@ -16,4 +17,17 @@ Future<void> setupLocator() async {
   locator.registerSingleton<BaseClient>(BaseClient(dio));
 
   locator.registerLazySingleton<AppBloc>(() => AppBloc());
+
+  final talker = TalkerFlutter.init(
+    settings: TalkerSettings(
+      colors: {
+        TalkerLogType.debug: AnsiPen()..cyan(),
+        TalkerLogType.error: AnsiPen()..red(),
+        TalkerLogType.info: AnsiPen()..magenta(),
+        TalkerLogType.warning: AnsiPen()..yellow(),
+      },
+    ),
+  );
+
+  locator.registerSingleton<Talker>(talker);
 }

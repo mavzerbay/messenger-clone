@@ -10,4 +10,6 @@ class AppEvent extends BaseBlocEvent with _$AppEvent {
   }) = _LoadingVisibilityEmitted;
 
   const factory AppEvent.toggleThemeMode() = _ToggleThemeMode;
+
+  const factory AppEvent.signOut({@Default(false) isForce}) = _SignOut;
 }
