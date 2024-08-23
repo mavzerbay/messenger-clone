@@ -76,10 +76,11 @@ abstract class BaseBlocDelegate<E extends BaseBlocEvent,
         hideLoading();
       }
       await doOnSuccess?.call();
-    } catch (e) {
+    } catch (e, st) {
       if (handleLoading) {
         hideLoading();
       }
+      logE(e, stackTrace: st);
       await doOnError?.call(e);
     } finally {
       await doOnEventCompleted?.call();

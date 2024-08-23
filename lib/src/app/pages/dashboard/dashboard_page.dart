@@ -1,14 +1,66 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:messenger_clone_flutter/src/app/pages/dashboard/bloc/dashboard_bloc.dart';
 import 'package:messenger_clone_flutter/src/shared/extensions/context_extension.dart';
 
 import '../../bloc/app_bloc.dart';
 import '../../navigation/app_router.gr.dart';
 
 @RoutePage()
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget implements AutoRouteWrapper {
   const DashboardPage({super.key});
+
+  @override
+  State<DashboardPage> createState() => _DashboardPageState();
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(
+      create: (_) => DashboardBloc()
+        ..appBloc = context.appBloc
+        ..add(const DashboardEvent.started()),
+      child: BlocBuilder<DashboardBloc, DashboardState>(
+        buildWhen: (previous, current) =>
+            previous.isHubConnectionStarted != current.isHubConnectionStarted,
+        builder: (context, state) {
+          return this;
+        },
+      ),
+    );
+  }
+}
+
+class _DashboardPageState extends State<DashboardPage>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch (state) {
+      case AppLifecycleState.resumed:
+        context
+            .read<DashboardBloc>()
+            .add(const DashboardEvent.updateActiveStatus(true));
+        break;
+      default:
+        context
+            .read<DashboardBloc>()
+            .add(const DashboardEvent.updateActiveStatus(false));
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +87,13 @@ class DashboardPage extends StatelessWidget {
                       context.appBloc.add(const AppEvent.toggleThemeMode()),
                 );
               },
+            ),
+
+            // sign out
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () =>
+                  context.appBloc.add(const AppEvent.signOut(isForce: false)),
             ),
           ],
         );
@@ -75,6 +134,7 @@ class DashboardPage extends StatelessWidget {
     );
   }
 }
+
 @RoutePage()
 class CallsPage extends StatelessWidget {
   const CallsPage({super.key});
@@ -82,16 +142,6 @@ class CallsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(child: Text('Calls'));
-  }
-}
-
-@RoutePage()
-class PeoplePage extends StatelessWidget {
-  const PeoplePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('People'));
   }
 }
 

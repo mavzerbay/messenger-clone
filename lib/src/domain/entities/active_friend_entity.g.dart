@@ -1,21 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_entity.dart';
+part of 'active_friend_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserEntityImpl _$$UserEntityImplFromJson(Map<String, dynamic> json) =>
-    _$UserEntityImpl(
+_$ActiveFriendEntityImpl _$$ActiveFriendEntityImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ActiveFriendEntityImpl(
+      isActive: json['isActive'] as bool? ?? false,
       id: (json['id'] as num).toInt(),
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       email: json['email'] as String,
     );
 
-Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
+Map<String, dynamic> _$$ActiveFriendEntityImplToJson(
+        _$ActiveFriendEntityImpl instance) =>
     <String, dynamic>{
+      'isActive': instance.isActive,
       'id': instance.id,
       'firstName': instance.firstName,
       'lastName': instance.lastName,

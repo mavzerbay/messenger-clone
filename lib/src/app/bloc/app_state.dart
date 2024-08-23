@@ -7,5 +7,6 @@ class AppState extends BaseBlocState with _$AppState {
     @Default(false) bool showLoading,
     @Default(true) bool firstTimeOnApp,
     String? loadingMessage,
+    UserEntity? currentUser,
   }) = _AppState;
 }

@@ -5,7 +5,6 @@ import 'package:retrofit/retrofit.dart';
 import '../../../data/models/register_request.dart';
 import '../../../domain/entities/index.dart';
 
-
 part 'base_client.g.dart';
 
 @RestApi()
@@ -21,4 +20,10 @@ abstract class BaseClient {
   Future<UserEntity> register(
     @Body() RegisterRequest body,
   );
+
+  @GET('/friends')
+  Future<List<FriendRequestEntity>> getFriendRequests();
+
+  @GET('/friend-list')
+  Future<List<ActiveFriendEntity>> getFriendList();
 }

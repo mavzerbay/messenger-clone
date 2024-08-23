@@ -8,6 +8,18 @@ mixin LogMixin on Object {
     _logger.debug(message);
   }
 
+  void logI(String message) {
+    _logger.info(message);
+  }
+
+  void logW(
+    String message, [
+    Object? exception,
+    StackTrace? stackTrace,
+  ]) {
+    _logger.warning(message);
+  }
+
   void logE(
     Object? errorMessage, {
     Object? error,

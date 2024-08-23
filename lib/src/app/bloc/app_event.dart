@@ -12,4 +12,7 @@ class AppEvent extends BaseBlocEvent with _$AppEvent {
   const factory AppEvent.toggleThemeMode() = _ToggleThemeMode;
 
   const factory AppEvent.signOut({@Default(false) isForce}) = _SignOut;
+
+  const factory AppEvent.updateCurrentUser({UserEntity? user}) =
+      _UpdateCurrentUser;
 }

@@ -23,6 +23,7 @@ mixin _$AppEvent {
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
     required TResult Function(dynamic isForce) signOut,
+    required TResult Function(UserEntity? user) updateCurrentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$AppEvent {
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
     TResult? Function(dynamic isForce)? signOut,
+    TResult? Function(UserEntity? user)? updateCurrentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$AppEvent {
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
     TResult Function(dynamic isForce)? signOut,
+    TResult Function(UserEntity? user)? updateCurrentUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$AppEvent {
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_UpdateCurrentUser value) updateCurrentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$AppEvent {
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_UpdateCurrentUser value)? updateCurrentUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +73,7 @@ mixin _$AppEvent {
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_UpdateCurrentUser value)? updateCurrentUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +139,7 @@ class _$StartedImpl implements _Started {
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
     required TResult Function(dynamic isForce) signOut,
+    required TResult Function(UserEntity? user) updateCurrentUser,
   }) {
     return started();
   }
@@ -145,6 +152,7 @@ class _$StartedImpl implements _Started {
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
     TResult? Function(dynamic isForce)? signOut,
+    TResult? Function(UserEntity? user)? updateCurrentUser,
   }) {
     return started?.call();
   }
@@ -157,6 +165,7 @@ class _$StartedImpl implements _Started {
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
     TResult Function(dynamic isForce)? signOut,
+    TResult Function(UserEntity? user)? updateCurrentUser,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -173,6 +182,7 @@ class _$StartedImpl implements _Started {
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_UpdateCurrentUser value) updateCurrentUser,
   }) {
     return started(this);
   }
@@ -185,6 +195,7 @@ class _$StartedImpl implements _Started {
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_UpdateCurrentUser value)? updateCurrentUser,
   }) {
     return started?.call(this);
   }
@@ -196,6 +207,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_UpdateCurrentUser value)? updateCurrentUser,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -291,6 +303,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
     required TResult Function(dynamic isForce) signOut,
+    required TResult Function(UserEntity? user) updateCurrentUser,
   }) {
     return loadingVisibilityEmitted(visibility, message);
   }
@@ -303,6 +316,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
     TResult? Function(dynamic isForce)? signOut,
+    TResult? Function(UserEntity? user)? updateCurrentUser,
   }) {
     return loadingVisibilityEmitted?.call(visibility, message);
   }
@@ -315,6 +329,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
     TResult Function(dynamic isForce)? signOut,
+    TResult Function(UserEntity? user)? updateCurrentUser,
     required TResult orElse(),
   }) {
     if (loadingVisibilityEmitted != null) {
@@ -331,6 +346,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_UpdateCurrentUser value) updateCurrentUser,
   }) {
     return loadingVisibilityEmitted(this);
   }
@@ -343,6 +359,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_UpdateCurrentUser value)? updateCurrentUser,
   }) {
     return loadingVisibilityEmitted?.call(this);
   }
@@ -354,6 +371,7 @@ class _$LoadingVisibilityEmittedImpl implements _LoadingVisibilityEmitted {
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_UpdateCurrentUser value)? updateCurrentUser,
     required TResult orElse(),
   }) {
     if (loadingVisibilityEmitted != null) {
@@ -418,6 +436,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
     required TResult Function(dynamic isForce) signOut,
+    required TResult Function(UserEntity? user) updateCurrentUser,
   }) {
     return toggleThemeMode();
   }
@@ -430,6 +449,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
     TResult? Function(dynamic isForce)? signOut,
+    TResult? Function(UserEntity? user)? updateCurrentUser,
   }) {
     return toggleThemeMode?.call();
   }
@@ -442,6 +462,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
     TResult Function(dynamic isForce)? signOut,
+    TResult Function(UserEntity? user)? updateCurrentUser,
     required TResult orElse(),
   }) {
     if (toggleThemeMode != null) {
@@ -458,6 +479,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_UpdateCurrentUser value) updateCurrentUser,
   }) {
     return toggleThemeMode(this);
   }
@@ -470,6 +492,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_UpdateCurrentUser value)? updateCurrentUser,
   }) {
     return toggleThemeMode?.call(this);
   }
@@ -481,6 +504,7 @@ class _$ToggleThemeModeImpl implements _ToggleThemeMode {
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_UpdateCurrentUser value)? updateCurrentUser,
     required TResult orElse(),
   }) {
     if (toggleThemeMode != null) {
@@ -562,6 +586,7 @@ class _$SignOutImpl implements _SignOut {
         loadingVisibilityEmitted,
     required TResult Function() toggleThemeMode,
     required TResult Function(dynamic isForce) signOut,
+    required TResult Function(UserEntity? user) updateCurrentUser,
   }) {
     return signOut(isForce);
   }
@@ -574,6 +599,7 @@ class _$SignOutImpl implements _SignOut {
         loadingVisibilityEmitted,
     TResult? Function()? toggleThemeMode,
     TResult? Function(dynamic isForce)? signOut,
+    TResult? Function(UserEntity? user)? updateCurrentUser,
   }) {
     return signOut?.call(isForce);
   }
@@ -586,6 +612,7 @@ class _$SignOutImpl implements _SignOut {
         loadingVisibilityEmitted,
     TResult Function()? toggleThemeMode,
     TResult Function(dynamic isForce)? signOut,
+    TResult Function(UserEntity? user)? updateCurrentUser,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -602,6 +629,7 @@ class _$SignOutImpl implements _SignOut {
         loadingVisibilityEmitted,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
     required TResult Function(_SignOut value) signOut,
+    required TResult Function(_UpdateCurrentUser value) updateCurrentUser,
   }) {
     return signOut(this);
   }
@@ -614,6 +642,7 @@ class _$SignOutImpl implements _SignOut {
         loadingVisibilityEmitted,
     TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_UpdateCurrentUser value)? updateCurrentUser,
   }) {
     return signOut?.call(this);
   }
@@ -625,6 +654,7 @@ class _$SignOutImpl implements _SignOut {
     TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
     TResult Function(_SignOut value)? signOut,
+    TResult Function(_UpdateCurrentUser value)? updateCurrentUser,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -644,11 +674,184 @@ abstract class _SignOut implements AppEvent {
 }
 
 /// @nodoc
+abstract class _$$UpdateCurrentUserImplCopyWith<$Res> {
+  factory _$$UpdateCurrentUserImplCopyWith(_$UpdateCurrentUserImpl value,
+          $Res Function(_$UpdateCurrentUserImpl) then) =
+      __$$UpdateCurrentUserImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserEntity? user});
+
+  $UserEntityCopyWith<$Res>? get user;
+}
+
+/// @nodoc
+class __$$UpdateCurrentUserImplCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$UpdateCurrentUserImpl>
+    implements _$$UpdateCurrentUserImplCopyWith<$Res> {
+  __$$UpdateCurrentUserImplCopyWithImpl(_$UpdateCurrentUserImpl _value,
+      $Res Function(_$UpdateCurrentUserImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_$UpdateCurrentUserImpl(
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserEntityCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCurrentUserImpl implements _UpdateCurrentUser {
+  const _$UpdateCurrentUserImpl({this.user});
+
+  @override
+  final UserEntity? user;
+
+  @override
+  String toString() {
+    return 'AppEvent.updateCurrentUser(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCurrentUserImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCurrentUserImplCopyWith<_$UpdateCurrentUserImpl> get copyWith =>
+      __$$UpdateCurrentUserImplCopyWithImpl<_$UpdateCurrentUserImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool visibility, String? message)
+        loadingVisibilityEmitted,
+    required TResult Function() toggleThemeMode,
+    required TResult Function(dynamic isForce) signOut,
+    required TResult Function(UserEntity? user) updateCurrentUser,
+  }) {
+    return updateCurrentUser(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(bool visibility, String? message)?
+        loadingVisibilityEmitted,
+    TResult? Function()? toggleThemeMode,
+    TResult? Function(dynamic isForce)? signOut,
+    TResult? Function(UserEntity? user)? updateCurrentUser,
+  }) {
+    return updateCurrentUser?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool visibility, String? message)?
+        loadingVisibilityEmitted,
+    TResult Function()? toggleThemeMode,
+    TResult Function(dynamic isForce)? signOut,
+    TResult Function(UserEntity? user)? updateCurrentUser,
+    required TResult orElse(),
+  }) {
+    if (updateCurrentUser != null) {
+      return updateCurrentUser(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_LoadingVisibilityEmitted value)
+        loadingVisibilityEmitted,
+    required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_SignOut value) signOut,
+    required TResult Function(_UpdateCurrentUser value) updateCurrentUser,
+  }) {
+    return updateCurrentUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_LoadingVisibilityEmitted value)?
+        loadingVisibilityEmitted,
+    TResult? Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult? Function(_SignOut value)? signOut,
+    TResult? Function(_UpdateCurrentUser value)? updateCurrentUser,
+  }) {
+    return updateCurrentUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_LoadingVisibilityEmitted value)? loadingVisibilityEmitted,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_SignOut value)? signOut,
+    TResult Function(_UpdateCurrentUser value)? updateCurrentUser,
+    required TResult orElse(),
+  }) {
+    if (updateCurrentUser != null) {
+      return updateCurrentUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCurrentUser implements AppEvent {
+  const factory _UpdateCurrentUser({final UserEntity? user}) =
+      _$UpdateCurrentUserImpl;
+
+  UserEntity? get user;
+  @JsonKey(ignore: true)
+  _$$UpdateCurrentUserImplCopyWith<_$UpdateCurrentUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AppState {
   bool get isDarkMode => throw _privateConstructorUsedError;
   bool get showLoading => throw _privateConstructorUsedError;
   bool get firstTimeOnApp => throw _privateConstructorUsedError;
   String? get loadingMessage => throw _privateConstructorUsedError;
+  UserEntity? get currentUser => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -664,7 +867,10 @@ abstract class $AppStateCopyWith<$Res> {
       {bool isDarkMode,
       bool showLoading,
       bool firstTimeOnApp,
-      String? loadingMessage});
+      String? loadingMessage,
+      UserEntity? currentUser});
+
+  $UserEntityCopyWith<$Res>? get currentUser;
 }
 
 /// @nodoc
@@ -684,6 +890,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? showLoading = null,
     Object? firstTimeOnApp = null,
     Object? loadingMessage = freezed,
+    Object? currentUser = freezed,
   }) {
     return _then(_value.copyWith(
       isDarkMode: null == isDarkMode
@@ -702,7 +909,23 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.loadingMessage
           : loadingMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      currentUser: freezed == currentUser
+          ? _value.currentUser
+          : currentUser // ignore: cast_nullable_to_non_nullable
+              as UserEntity?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res>? get currentUser {
+    if (_value.currentUser == null) {
+      return null;
+    }
+
+    return $UserEntityCopyWith<$Res>(_value.currentUser!, (value) {
+      return _then(_value.copyWith(currentUser: value) as $Val);
+    });
   }
 }
 
@@ -718,7 +941,11 @@ abstract class _$$AppStateImplCopyWith<$Res>
       {bool isDarkMode,
       bool showLoading,
       bool firstTimeOnApp,
-      String? loadingMessage});
+      String? loadingMessage,
+      UserEntity? currentUser});
+
+  @override
+  $UserEntityCopyWith<$Res>? get currentUser;
 }
 
 /// @nodoc
@@ -736,6 +963,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
     Object? showLoading = null,
     Object? firstTimeOnApp = null,
     Object? loadingMessage = freezed,
+    Object? currentUser = freezed,
   }) {
     return _then(_$AppStateImpl(
       isDarkMode: null == isDarkMode
@@ -754,6 +982,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.loadingMessage
           : loadingMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      currentUser: freezed == currentUser
+          ? _value.currentUser
+          : currentUser // ignore: cast_nullable_to_non_nullable
+              as UserEntity?,
     ));
   }
 }
@@ -765,7 +997,8 @@ class _$AppStateImpl implements _AppState {
       {this.isDarkMode = false,
       this.showLoading = false,
       this.firstTimeOnApp = true,
-      this.loadingMessage});
+      this.loadingMessage,
+      this.currentUser});
 
   @override
   @JsonKey()
@@ -778,10 +1011,12 @@ class _$AppStateImpl implements _AppState {
   final bool firstTimeOnApp;
   @override
   final String? loadingMessage;
+  @override
+  final UserEntity? currentUser;
 
   @override
   String toString() {
-    return 'AppState(isDarkMode: $isDarkMode, showLoading: $showLoading, firstTimeOnApp: $firstTimeOnApp, loadingMessage: $loadingMessage)';
+    return 'AppState(isDarkMode: $isDarkMode, showLoading: $showLoading, firstTimeOnApp: $firstTimeOnApp, loadingMessage: $loadingMessage, currentUser: $currentUser)';
   }
 
   @override
@@ -796,12 +1031,14 @@ class _$AppStateImpl implements _AppState {
             (identical(other.firstTimeOnApp, firstTimeOnApp) ||
                 other.firstTimeOnApp == firstTimeOnApp) &&
             (identical(other.loadingMessage, loadingMessage) ||
-                other.loadingMessage == loadingMessage));
+                other.loadingMessage == loadingMessage) &&
+            (identical(other.currentUser, currentUser) ||
+                other.currentUser == currentUser));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isDarkMode, showLoading, firstTimeOnApp, loadingMessage);
+  int get hashCode => Object.hash(runtimeType, isDarkMode, showLoading,
+      firstTimeOnApp, loadingMessage, currentUser);
 
   @JsonKey(ignore: true)
   @override
@@ -815,7 +1052,8 @@ abstract class _AppState implements AppState {
       {final bool isDarkMode,
       final bool showLoading,
       final bool firstTimeOnApp,
-      final String? loadingMessage}) = _$AppStateImpl;
+      final String? loadingMessage,
+      final UserEntity? currentUser}) = _$AppStateImpl;
 
   @override
   bool get isDarkMode;
@@ -825,6 +1063,8 @@ abstract class _AppState implements AppState {
   bool get firstTimeOnApp;
   @override
   String? get loadingMessage;
+  @override
+  UserEntity? get currentUser;
   @override
   @JsonKey(ignore: true)
   _$$AppStateImplCopyWith<_$AppStateImpl> get copyWith =>
