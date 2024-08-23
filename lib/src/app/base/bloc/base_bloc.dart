@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:messenger_clone_flutter/src/app/navigation/app_navigator_impl.dart';
+import 'package:messenger_clone_flutter/src/app/network/exceptions/token_exception.dart';
 import 'package:messenger_clone_flutter/src/domain/domain/app_navigator.dart';
 import 'package:messenger_clone_flutter/src/shared/mixin/log_mixin.dart';
 
@@ -76,6 +77,9 @@ abstract class BaseBlocDelegate<E extends BaseBlocEvent,
         hideLoading();
       }
       await doOnSuccess?.call();
+    } on TokenException catch (_) {
+      navigator.showErrorSnackBar('Token expired, please login again');
+      appBloc.add(const AppEvent.signOut(isForce: true));
     } catch (e, st) {
       if (handleLoading) {
         hideLoading();

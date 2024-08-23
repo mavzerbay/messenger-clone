@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../../interceptors/error_interceptor.dart';
 import '../../interceptors/token_interceptor.dart';
 
 Dio buildDioClient(String base) {
@@ -23,6 +24,7 @@ Dio buildDioClient(String base) {
       enabled: kDebugMode,
     ),
     TokenInterceptor.instance,
+    ErrorInterceptor(),
   ]);
 
   return dio;

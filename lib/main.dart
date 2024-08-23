@@ -66,10 +66,10 @@ class MainApp extends StatelessWidget {
                 navigatorObservers: () => [AppNavigatorObserver()],
               ),
               routeInformationParser: router.defaultRouteParser(),
-              color: Colors.blue[900],
               themeMode: state.isDarkMode ? ThemeMode.dark : ThemeMode.light,
               theme: ThemeData(
                 useMaterial3: true,
+                brightness: Brightness.light,
                 colorSchemeSeed: Colors.blue[900],
                 visualDensity: VisualDensity.adaptivePlatformDensity,
               ),
