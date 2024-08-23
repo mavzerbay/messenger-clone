@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 
 import '../di/locator.dart';
 import 'app_router.gr.dart';
+import 'middleware/auth_guard.dart';
 
 final router = locator<AppRouter>();
 
@@ -18,6 +19,7 @@ class AppRouter extends RootStackRouter {
         ),
         CustomRoute(
           page: DashboardRoute.page,
+          guards: const [AuthGuard()],
           transitionsBuilder: TransitionsBuilders.slideBottom,
           durationInMilliseconds: 300,
           children: [

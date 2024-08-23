@@ -9,6 +9,8 @@ import 'package:messenger_clone_flutter/src/data/models/login_request.dart';
 import 'package:messenger_clone_flutter/src/domain/repositories/auth_service.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../bloc/app_bloc.dart';
+
 part 'login_bloc.freezed.dart';
 part 'login_event.dart';
 part 'login_state.dart';
@@ -63,6 +65,7 @@ class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
         if (response.token != null) {
           CacheManager.instance
               .setString(key: CacheKey.accessToken, value: response.token!);
+          appBloc.add(AppEvent.updateCurrentUser(user: response.user));
           navigator.showSuccessSnackBar('Login success');
           navigator.pushAndPopUntil(
             const DashboardRoute(),

@@ -125,7 +125,7 @@ class DashboardRoute extends _i8.PageRouteInfo<void> {
   static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i1.DashboardPage();
+      return _i8.WrappedRoute(child: const _i1.DashboardPage());
     },
   );
 }

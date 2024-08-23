@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:messenger_clone_flutter/src/shared/extensions/context_extension.dart';
 
-import '../../bloc/app_bloc.dart';
 import '../../navigation/app_router.gr.dart';
+import '../dashboard/bloc/dashboard_bloc.dart';
 
 @RoutePage()
 class ChatsPage extends StatelessWidget {
@@ -12,48 +15,52 @@ class ChatsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          const _MessageItem(
-            chatItem: (
-              id: 1,
-              name: 'Jon',
-              lastMessage: 'This was the last message',
-            ),
-          ),
-          const _MessageItem(
-            chatItem: (
-              id: 2,
-              name: 'Larry',
-              lastMessage: 'This was the last message',
-            ),
-          ),
-          const _MessageItem(
-            chatItem: (
-              id: 3,
-              name: 'Barry',
-              lastMessage: 'This was the last message',
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              context.appBloc.add(const AppEvent.signOut());
-            },
-            child: Text(
-              'Sign Out',
-              style: context.textTheme.bodyLarge?.copyWith(
-                color: context.colorScheme.error,
-                decoration: TextDecoration.underline,
-              ),
-            ),
-          ),
-        ],
+      body: BlocBuilder<DashboardBloc, DashboardState>(
+        builder: (context, state) {
+          BoxScrollView child = ListView(
+            children: const [
+              Center(
+                child: CircularProgressIndicator.adaptive(),
+              )
+            ],
+          );
+
+          if (!state.isFriendsLoading) {
+            child = ListView.builder(
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: state.friends.length,
+              itemBuilder: (context, index) {
+                final friend = state.friends[index];
+                return _MessageItem(
+                  chatItem: (
+                    id: friend.id,
+                    name: friend.firstName,
+                    lastMessage: friend.email,
+                    isActive: friend.isActive,
+                  ),
+                );
+              },
+            );
+          }
+
+          return RefreshIndicator(
+              child: child,
+              onRefresh: () {
+                final Completer<void> completer = Completer<void>();
+
+                context
+                    .read<DashboardBloc>()
+                    .add(DashboardEvent.onFriendsRefresh(completer));
+
+                return completer.future;
+              });
+        },
       ),
     );
   }
 }
 
-typedef ChatItem = ({int id, String name, String lastMessage});
+typedef ChatItem = ({int id, String name, String lastMessage, bool isActive});
 
 class _MessageItem extends StatelessWidget {
   const _MessageItem({
@@ -66,9 +73,32 @@ class _MessageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.all(8),
-      leading: const CircleAvatar(
-        radius: 30,
-        child: FlutterLogo(),
+      leading: Stack(
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundImage: NetworkImage(
+                'https://randomuser.me/api/portraits/men/${chatItem.id}.jpg'),
+          ),
+          if (chatItem.isActive)
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Container(
+                width: 14,
+                height: 14,
+                decoration: BoxDecoration(
+                  color: Colors.green, // Online indicator color
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: context.theme
+                        .scaffoldBackgroundColor, // Border color to separate from avatar
+                    width: 2,
+                  ),
+                ),
+              ),
+            ),
+        ],
       ),
       title: Text(chatItem.name),
       subtitle: Text(chatItem.lastMessage),

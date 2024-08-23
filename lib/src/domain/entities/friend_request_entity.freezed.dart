@@ -37,6 +37,9 @@ abstract class $FriendRequestEntityCopyWith<$Res> {
       _$FriendRequestEntityCopyWithImpl<$Res, FriendRequestEntity>;
   @useResult
   $Res call({int id, UserEntity creator, UserEntity receiver});
+
+  $UserEntityCopyWith<$Res> get creator;
+  $UserEntityCopyWith<$Res> get receiver;
 }
 
 /// @nodoc
@@ -71,6 +74,22 @@ class _$FriendRequestEntityCopyWithImpl<$Res, $Val extends FriendRequestEntity>
               as UserEntity,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res> get creator {
+    return $UserEntityCopyWith<$Res>(_value.creator, (value) {
+      return _then(_value.copyWith(creator: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res> get receiver {
+    return $UserEntityCopyWith<$Res>(_value.receiver, (value) {
+      return _then(_value.copyWith(receiver: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -82,6 +101,11 @@ abstract class _$$FriendRequestEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call({int id, UserEntity creator, UserEntity receiver});
+
+  @override
+  $UserEntityCopyWith<$Res> get creator;
+  @override
+  $UserEntityCopyWith<$Res> get receiver;
 }
 
 /// @nodoc

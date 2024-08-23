@@ -40,7 +40,7 @@ class AppConfig extends ApplicationConfig {
 
     Intl.defaultLocale = 'en';
 
-    Bloc.observer = const AppBlocObserver();
+    Bloc.observer = AppBlocObserver();
 
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,

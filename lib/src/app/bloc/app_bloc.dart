@@ -5,6 +5,7 @@ import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_event.dart';
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_state.dart';
 import 'package:messenger_clone_flutter/src/app/base/cache/cache_manager.dart';
 import 'package:messenger_clone_flutter/src/app/navigation/app_router.gr.dart';
+import 'package:messenger_clone_flutter/src/domain/entities/index.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
@@ -28,7 +29,13 @@ class AppBloc extends BaseBloc<AppEvent, AppState> {
       _onSignOut,
       transformer: log(),
     );
+    on<_UpdateCurrentUser>(
+      _onUpdateCurrentUser,
+      transformer: log(),
+    );
   }
+
+  UserEntity? get currentUser => state.currentUser;
 
   Future<void> _onStarted(_Started event, Emitter<AppState> emit) async {
     await runBlocCatching(
@@ -92,6 +99,14 @@ class AppBloc extends BaseBloc<AppEvent, AppState> {
         navigator.replace(const LoginRoute());
       },
       handleLoading: false,
+    );
+  }
+
+  void _onUpdateCurrentUser(_UpdateCurrentUser event, Emitter<AppState> emit) {
+    emit(
+      state.copyWith(
+        currentUser: event.user,
+      ),
     );
   }
 }

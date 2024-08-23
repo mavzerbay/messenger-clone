@@ -23,4 +23,14 @@ class AuthService extends IAuthService {
   Future<UserEntity> register(RegisterRequest request) {
     return _client.register(request);
   }
+
+  @override
+  Future<List<FriendRequestEntity>> getFriendRequests() {
+    return _client.getFriendRequests();
+  }
+
+  @override
+  Future<List<ActiveFriendEntity>> getFriendList() {
+    return _client.getFriendList();
+  }
 }
