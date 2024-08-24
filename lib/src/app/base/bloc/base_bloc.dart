@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:messenger_clone_flutter/src/app/navigation/app_navigator_impl.dart';
 import 'package:messenger_clone_flutter/src/app/network/exceptions/token_exception.dart';
@@ -79,7 +80,16 @@ abstract class BaseBlocDelegate<E extends BaseBlocEvent,
       await doOnSuccess?.call();
     } on TokenException catch (_) {
       navigator.showErrorSnackBar('Token expired, please login again');
-      appBloc.add(const AppEvent.signOut(isForce: true));
+      (appBloc).add(const AppEvent.signOut(isForce: true));
+    } on DioException catch (e) {
+      if (e.error is TokenException) {
+        navigator.showErrorSnackBar('Token expired, please login again');
+        appBloc.add(const AppEvent.signOut(isForce: true));
+      }
+      if (handleLoading) {
+        hideLoading();
+      }
+      await doOnError?.call(e);
     } catch (e, st) {
       if (handleLoading) {
         hideLoading();

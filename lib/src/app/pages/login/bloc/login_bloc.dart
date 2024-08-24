@@ -5,6 +5,7 @@ import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_event.dart';
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_state.dart';
 import 'package:messenger_clone_flutter/src/app/base/cache/cache_manager.dart';
 import 'package:messenger_clone_flutter/src/app/navigation/app_router.gr.dart';
+import 'package:messenger_clone_flutter/src/data/interfaces/auth_service_interface.dart';
 import 'package:messenger_clone_flutter/src/data/models/login_request.dart';
 import 'package:messenger_clone_flutter/src/domain/repositories/auth_service.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -31,7 +32,7 @@ class LoginBloc extends BaseBloc<LoginEvent, LoginState> {
     );
   }
 
-  final _authService = AuthService.instance;
+  final IAuthService _authService = AuthService.instance;
 
   final formGroup = fb.group({
     'email': FormControl<String>(validators: [

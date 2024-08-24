@@ -13,6 +13,7 @@ class ErrorInterceptor extends Interceptor {
           error: const TokenException(),
         ),
       );
+      return;
     }
     handler.next(err);
   }

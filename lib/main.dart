@@ -62,6 +62,7 @@ class MainApp extends StatelessWidget {
                   ),
                 );
               },
+              locale: const Locale('en'),
               routerDelegate: router.delegate(
                 navigatorObservers: () => [AppNavigatorObserver()],
               ),

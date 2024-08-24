@@ -48,15 +48,17 @@ class CallsRoute extends _i8.PageRouteInfo<void> {
 class ChatDetailRoute extends _i8.PageRouteInfo<ChatDetailRouteArgs> {
   ChatDetailRoute({
     _i9.Key? key,
-    required int chatId,
+    required int userId,
+    required String chatName,
     List<_i8.PageRouteInfo>? children,
   }) : super(
           ChatDetailRoute.name,
           args: ChatDetailRouteArgs(
             key: key,
-            chatId: chatId,
+            userId: userId,
+            chatName: chatName,
           ),
-          rawPathParams: {'id': chatId},
+          rawPathParams: {'id': userId},
           initialChildren: children,
         );
 
@@ -65,12 +67,11 @@ class ChatDetailRoute extends _i8.PageRouteInfo<ChatDetailRouteArgs> {
   static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      final pathParams = data.inheritedPathParams;
-      final args = data.argsAs<ChatDetailRouteArgs>(
-          orElse: () => ChatDetailRouteArgs(chatId: pathParams.getInt('id')));
+      final args = data.argsAs<ChatDetailRouteArgs>();
       return _i2.ChatDetailPage(
         key: args.key,
-        chatId: args.chatId,
+        userId: args.userId,
+        chatName: args.chatName,
       );
     },
   );
@@ -79,16 +80,19 @@ class ChatDetailRoute extends _i8.PageRouteInfo<ChatDetailRouteArgs> {
 class ChatDetailRouteArgs {
   const ChatDetailRouteArgs({
     this.key,
-    required this.chatId,
+    required this.userId,
+    required this.chatName,
   });
 
   final _i9.Key? key;
 
-  final int chatId;
+  final int userId;
+
+  final String chatName;
 
   @override
   String toString() {
-    return 'ChatDetailRouteArgs{key: $key, chatId: $chatId}';
+    return 'ChatDetailRouteArgs{key: $key, userId: $userId, chatName: $chatName}';
   }
 }
 

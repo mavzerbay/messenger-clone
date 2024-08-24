@@ -26,4 +26,7 @@ abstract class BaseClient {
 
   @GET('/friend-list')
   Future<List<ActiveFriendEntity>> getFriendList();
+
+  @GET('/current-user')
+  Future<UserEntity> currentUser();
 }

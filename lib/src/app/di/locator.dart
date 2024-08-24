@@ -16,8 +16,6 @@ Future<void> setupLocator() async {
 
   locator.registerSingleton<BaseClient>(BaseClient(dio));
 
-  locator.registerLazySingleton<AppBloc>(() => AppBloc());
-
   final talker = TalkerFlutter.init(
     settings: TalkerSettings(
       colors: {
@@ -30,4 +28,13 @@ Future<void> setupLocator() async {
   );
 
   locator.registerSingleton<Talker>(talker);
+
+  final appBloc = AppBloc();
+
+  // Buradaki saçma kodun sebebi normalde auth ve appBloc ayırmak gerekir fakat
+  // bu projede böyle bir ayrım yapmadığım ve baseBloc içerisinde signout yapma
+  // ihtimalim olduğundan böyle bir çözüm yolu buldum.
+  appBloc.appBloc = appBloc;
+
+  locator.registerLazySingleton<AppBloc>(() => appBloc);
 }

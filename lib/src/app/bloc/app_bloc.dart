@@ -5,7 +5,10 @@ import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_event.dart';
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_state.dart';
 import 'package:messenger_clone_flutter/src/app/base/cache/cache_manager.dart';
 import 'package:messenger_clone_flutter/src/app/navigation/app_router.gr.dart';
+import 'package:messenger_clone_flutter/src/data/interfaces/auth_service_interface.dart';
 import 'package:messenger_clone_flutter/src/domain/entities/index.dart';
+
+import '../../domain/repositories/auth_service.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
@@ -37,6 +40,8 @@ class AppBloc extends BaseBloc<AppEvent, AppState> {
 
   UserEntity? get currentUser => state.currentUser;
 
+  final IAuthService _authService = AuthService.instance;
+
   Future<void> _onStarted(_Started event, Emitter<AppState> emit) async {
     await runBlocCatching(
       action: () async {
@@ -53,6 +58,8 @@ class AppBloc extends BaseBloc<AppEvent, AppState> {
         final token = await cacheManager.getString(key: CacheKey.accessToken);
 
         if (token != null) {
+          final user = await _authService.currentUser();
+          emit(state.copyWith(currentUser: user));
           navigator.replace(const DashboardRoute());
         } else {
           navigator.replace(const LoginRoute());

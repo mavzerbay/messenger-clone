@@ -33,4 +33,9 @@ class AuthService extends IAuthService {
   Future<List<ActiveFriendEntity>> getFriendList() {
     return _client.getFriendList();
   }
+
+  @override
+  Future<UserEntity> currentUser() {
+    return _client.currentUser();
+  }
 }

@@ -34,7 +34,7 @@ class ChatsPage extends StatelessWidget {
                 return _MessageItem(
                   chatItem: (
                     id: friend.id,
-                    name: friend.firstName,
+                    name: friend.fullName,
                     lastMessage: friend.email,
                     isActive: friend.isActive,
                   ),
@@ -103,7 +103,12 @@ class _MessageItem extends StatelessWidget {
       title: Text(chatItem.name),
       subtitle: Text(chatItem.lastMessage),
       onTap: () {
-        context.router.push(ChatDetailRoute(chatId: chatItem.id));
+        context.router.push(
+          ChatDetailRoute(
+            userId: chatItem.id,
+            chatName: chatItem.name,
+          ),
+        );
       },
     );
   }

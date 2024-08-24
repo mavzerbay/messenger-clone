@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+
 import 'package:messenger_clone_flutter/src/app/bloc/app_bloc.dart';
 import 'package:messenger_clone_flutter/src/app/resource/constants/env_constants.dart';
 
@@ -32,6 +34,9 @@ class AppConfig extends ApplicationConfig {
   @override
   Future<void> config() async {
     WidgetsFlutterBinding.ensureInitialized();
+
+    await initializeDateFormatting();
+
     await setupLocator();
 
     locator<AppBloc>().add(const AppEvent.started());

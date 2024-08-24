@@ -8,4 +8,5 @@ abstract class IAuthService {
   Future<UserEntity> register(RegisterRequest request);
   Future<List<FriendRequestEntity>> getFriendRequests();
   Future<List<ActiveFriendEntity>> getFriendList();
+  Future<UserEntity> currentUser();
 }

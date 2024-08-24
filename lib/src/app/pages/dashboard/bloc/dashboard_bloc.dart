@@ -5,8 +5,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_event.dart';
 import 'package:messenger_clone_flutter/src/app/base/bloc/base_bloc_state.dart';
+import 'package:messenger_clone_flutter/src/data/interfaces/auth_service_interface.dart';
 import 'package:messenger_clone_flutter/src/domain/entities/index.dart';
-import 'package:messenger_clone_flutter/src/shared/socket_service.dart';
+import 'package:messenger_clone_flutter/src/shared/hubs/presence_hub.dart';
 
 import '../../../../domain/repositories/auth_service.dart';
 import '../../../base/bloc/base_bloc.dart';
@@ -49,8 +50,8 @@ class DashboardBloc extends BaseBloc<DashboardEvent, DashboardState> {
     return super.close();
   }
 
-  final _authService = AuthService.instance;
-  final SocketService _socketService = SocketService.instance;
+  final IAuthService _authService = AuthService.instance;
+  final PresenceHub _socketService = PresenceHub.instance;
 
   Future<void> _onStarted(_Started event, Emitter<DashboardState> emit) async {
     final socketCatching = runBlocCatching(

@@ -129,12 +129,13 @@ class __$$UserEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserEntityImpl implements _UserEntity {
+class _$UserEntityImpl extends _UserEntity {
   const _$UserEntityImpl(
       {required this.id,
       required this.firstName,
       required this.lastName,
-      required this.email});
+      required this.email})
+      : super._();
 
   factory _$UserEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserEntityImplFromJson(json);
@@ -184,12 +185,13 @@ class _$UserEntityImpl implements _UserEntity {
   }
 }
 
-abstract class _UserEntity implements UserEntity {
+abstract class _UserEntity extends UserEntity {
   const factory _UserEntity(
       {required final int id,
       required final String firstName,
       required final String lastName,
       required final String email}) = _$UserEntityImpl;
+  const _UserEntity._() : super._();
 
   factory _UserEntity.fromJson(Map<String, dynamic> json) =
       _$UserEntityImpl.fromJson;

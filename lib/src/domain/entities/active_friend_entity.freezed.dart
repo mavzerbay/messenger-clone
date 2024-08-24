@@ -142,13 +142,14 @@ class __$$ActiveFriendEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ActiveFriendEntityImpl implements _ActiveFriendEntity {
+class _$ActiveFriendEntityImpl extends _ActiveFriendEntity {
   const _$ActiveFriendEntityImpl(
       {this.isActive = false,
       required this.id,
       required this.firstName,
       required this.lastName,
-      required this.email});
+      required this.email})
+      : super._();
 
   factory _$ActiveFriendEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ActiveFriendEntityImplFromJson(json);
@@ -205,13 +206,14 @@ class _$ActiveFriendEntityImpl implements _ActiveFriendEntity {
   }
 }
 
-abstract class _ActiveFriendEntity implements ActiveFriendEntity {
+abstract class _ActiveFriendEntity extends ActiveFriendEntity {
   const factory _ActiveFriendEntity(
       {final bool isActive,
       required final int id,
       required final String firstName,
       required final String lastName,
       required final String email}) = _$ActiveFriendEntityImpl;
+  const _ActiveFriendEntity._() : super._();
 
   factory _ActiveFriendEntity.fromJson(Map<String, dynamic> json) =
       _$ActiveFriendEntityImpl.fromJson;
