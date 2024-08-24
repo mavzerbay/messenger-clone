@@ -3,6 +3,7 @@ import 'package:messenger_clone_flutter/src/app/network/clients/base_client.dart
 import 'package:messenger_clone_flutter/src/data/models/login_request.dart';
 import 'package:messenger_clone_flutter/src/data/models/register_request.dart';
 import 'package:messenger_clone_flutter/src/data/interfaces/auth_service_interface.dart';
+import 'package:messenger_clone_flutter/src/domain/entities/message_entity.dart';
 
 import '../entities/index.dart';
 
@@ -37,5 +38,10 @@ class AuthService extends IAuthService {
   @override
   Future<UserEntity> currentUser() {
     return _client.currentUser();
+  }
+
+  @override
+  Future<List<MessageEntity>> getMessages(int conversationId) {
+    return _client.getMessages(conversationId);
   }
 }

@@ -10,6 +10,7 @@ abstract class MessageEntity with _$MessageEntity {
     required String content,
     required int creatorId,
     required int conversationId,
+    required DateTime createdAt,
   }) = _MessageEntity;
 
   factory MessageEntity.fromJson(Map<String, dynamic> json) =>

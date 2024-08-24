@@ -24,6 +24,7 @@ mixin _$MessageEntity {
   String get content => throw _privateConstructorUsedError;
   int get creatorId => throw _privateConstructorUsedError;
   int get conversationId => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,12 @@ abstract class $MessageEntityCopyWith<$Res> {
           MessageEntity value, $Res Function(MessageEntity) then) =
       _$MessageEntityCopyWithImpl<$Res, MessageEntity>;
   @useResult
-  $Res call({int id, String content, int creatorId, int conversationId});
+  $Res call(
+      {int id,
+      String content,
+      int creatorId,
+      int conversationId,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -57,6 +63,7 @@ class _$MessageEntityCopyWithImpl<$Res, $Val extends MessageEntity>
     Object? content = null,
     Object? creatorId = null,
     Object? conversationId = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -75,6 +82,10 @@ class _$MessageEntityCopyWithImpl<$Res, $Val extends MessageEntity>
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
               as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -87,7 +98,12 @@ abstract class _$$MessageEntityImplCopyWith<$Res>
       __$$MessageEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String content, int creatorId, int conversationId});
+  $Res call(
+      {int id,
+      String content,
+      int creatorId,
+      int conversationId,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -105,6 +121,7 @@ class __$$MessageEntityImplCopyWithImpl<$Res>
     Object? content = null,
     Object? creatorId = null,
     Object? conversationId = null,
+    Object? createdAt = null,
   }) {
     return _then(_$MessageEntityImpl(
       id: null == id
@@ -123,6 +140,10 @@ class __$$MessageEntityImplCopyWithImpl<$Res>
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
               as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -134,7 +155,8 @@ class _$MessageEntityImpl implements _MessageEntity {
       {required this.id,
       required this.content,
       required this.creatorId,
-      required this.conversationId});
+      required this.conversationId,
+      required this.createdAt});
 
   factory _$MessageEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$MessageEntityImplFromJson(json);
@@ -147,10 +169,12 @@ class _$MessageEntityImpl implements _MessageEntity {
   final int creatorId;
   @override
   final int conversationId;
+  @override
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'MessageEntity(id: $id, content: $content, creatorId: $creatorId, conversationId: $conversationId)';
+    return 'MessageEntity(id: $id, content: $content, creatorId: $creatorId, conversationId: $conversationId, createdAt: $createdAt)';
   }
 
   @override
@@ -163,13 +187,15 @@ class _$MessageEntityImpl implements _MessageEntity {
             (identical(other.creatorId, creatorId) ||
                 other.creatorId == creatorId) &&
             (identical(other.conversationId, conversationId) ||
-                other.conversationId == conversationId));
+                other.conversationId == conversationId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, content, creatorId, conversationId);
+  int get hashCode => Object.hash(
+      runtimeType, id, content, creatorId, conversationId, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -190,7 +216,8 @@ abstract class _MessageEntity implements MessageEntity {
       {required final int id,
       required final String content,
       required final int creatorId,
-      required final int conversationId}) = _$MessageEntityImpl;
+      required final int conversationId,
+      required final DateTime createdAt}) = _$MessageEntityImpl;
 
   factory _MessageEntity.fromJson(Map<String, dynamic> json) =
       _$MessageEntityImpl.fromJson;
@@ -203,6 +230,8 @@ abstract class _MessageEntity implements MessageEntity {
   int get creatorId;
   @override
   int get conversationId;
+  @override
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$MessageEntityImplCopyWith<_$MessageEntityImpl> get copyWith =>

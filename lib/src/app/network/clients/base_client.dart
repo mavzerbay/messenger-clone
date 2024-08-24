@@ -4,6 +4,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../../data/models/register_request.dart';
 import '../../../domain/entities/index.dart';
+import '../../../domain/entities/message_entity.dart';
 
 part 'base_client.g.dart';
 
@@ -29,4 +30,9 @@ abstract class BaseClient {
 
   @GET('/current-user')
   Future<UserEntity> currentUser();
+
+  @GET('/messages/{conversationId}')
+  Future<List<MessageEntity>> getMessages(
+    @Path('conversationId') int conversationId,
+  );
 }

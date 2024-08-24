@@ -27,7 +27,7 @@ class _ChatDetailPageState extends BasePageState<ChatDetailPage, ChatBloc> {
   late final ChatController chatController;
 
   @override
-  ChatBloc setBloc() => ChatBloc()..add(const ChatEvent.started());
+  ChatBloc setBloc() => ChatBloc()..add(ChatEvent.started(widget.userId));
 
   @override
   void initState() {
@@ -71,7 +71,11 @@ class _ChatDetailPageState extends BasePageState<ChatDetailPage, ChatBloc> {
             listenWhen: (previous, current) =>
                 previous.messages != current.messages,
             listener: (context, state) {
-              chatController.loadMoreData(state.messages);
+              if (chatController.initialMessageList.isNotEmpty) {
+                chatController.addMessage(state.messages.last);
+              } else {
+                chatController.loadMoreData(state.messages);
+              }
             },
           ),
         ],
@@ -79,7 +83,9 @@ class _ChatDetailPageState extends BasePageState<ChatDetailPage, ChatBloc> {
           builder: (context, state) {
             return ChatView(
               chatController: chatController,
-              chatViewState: ChatViewState.hasMessages,
+              chatViewState: state.viewState,
+              onSendTap: (message, replyMessage, messageType) =>
+                  bloc.add(ChatEvent.messageSent(message)),
               emojiPickerSheetConfig: Config(
                 emojiViewConfig: EmojiViewConfig(
                   backgroundColor: context.theme.scaffoldBackgroundColor,
@@ -170,6 +176,9 @@ class _ChatDetailPageState extends BasePageState<ChatDetailPage, ChatBloc> {
                 ),
               ),
               sendMessageConfig: SendMessageConfiguration(
+                enableCameraImagePicker: false,
+                enableGalleryImagePicker: false,
+                allowRecordingVoice: false,
                 textFieldBackgroundColor: context.theme.secondaryHeaderColor,
                 defaultSendButtonColor: context.theme.iconTheme.color,
                 textFieldConfig: TextFieldConfiguration(

@@ -12,6 +12,7 @@ _$MessageEntityImpl _$$MessageEntityImplFromJson(Map<String, dynamic> json) =>
       content: json['content'] as String,
       creatorId: (json['creatorId'] as num).toInt(),
       conversationId: (json['conversationId'] as num).toInt(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
 Map<String, dynamic> _$$MessageEntityImplToJson(_$MessageEntityImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$MessageEntityImplToJson(_$MessageEntityImpl instance) =>
       'content': instance.content,
       'creatorId': instance.creatorId,
       'conversationId': instance.conversationId,
+      'createdAt': instance.createdAt.toIso8601String(),
     };
