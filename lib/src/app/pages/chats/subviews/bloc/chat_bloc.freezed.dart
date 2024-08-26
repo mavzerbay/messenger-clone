@@ -25,6 +25,7 @@ mixin _$ChatEvent {
     required TResult Function(List<MessageEntity> messages) onGetMessages,
     required TResult Function(Message message) messageReceived,
     required TResult Function(String message) messageSent,
+    required TResult Function(bool isActive) onFriendStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$ChatEvent {
     TResult? Function(List<MessageEntity> messages)? onGetMessages,
     TResult? Function(Message message)? messageReceived,
     TResult? Function(String message)? messageSent,
+    TResult? Function(bool isActive)? onFriendStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$ChatEvent {
     TResult Function(List<MessageEntity> messages)? onGetMessages,
     TResult Function(Message message)? messageReceived,
     TResult Function(String message)? messageSent,
+    TResult Function(bool isActive)? onFriendStatusChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,8 @@ mixin _$ChatEvent {
     required TResult Function(_OnGetMessages value) onGetMessages,
     required TResult Function(_MessageReceived value) messageReceived,
     required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_OnFriendStatusChanged value)
+        onFriendStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$ChatEvent {
     TResult? Function(_OnGetMessages value)? onGetMessages,
     TResult? Function(_MessageReceived value)? messageReceived,
     TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +85,7 @@ mixin _$ChatEvent {
     TResult Function(_OnGetMessages value)? onGetMessages,
     TResult Function(_MessageReceived value)? messageReceived,
     TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,6 +180,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(List<MessageEntity> messages) onGetMessages,
     required TResult Function(Message message) messageReceived,
     required TResult Function(String message) messageSent,
+    required TResult Function(bool isActive) onFriendStatusChanged,
   }) {
     return started(friendId);
   }
@@ -187,6 +195,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(List<MessageEntity> messages)? onGetMessages,
     TResult? Function(Message message)? messageReceived,
     TResult? Function(String message)? messageSent,
+    TResult? Function(bool isActive)? onFriendStatusChanged,
   }) {
     return started?.call(friendId);
   }
@@ -201,6 +210,7 @@ class _$StartedImpl implements _Started {
     TResult Function(List<MessageEntity> messages)? onGetMessages,
     TResult Function(Message message)? messageReceived,
     TResult Function(String message)? messageSent,
+    TResult Function(bool isActive)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -219,6 +229,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_OnGetMessages value) onGetMessages,
     required TResult Function(_MessageReceived value) messageReceived,
     required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_OnFriendStatusChanged value)
+        onFriendStatusChanged,
   }) {
     return started(this);
   }
@@ -232,6 +244,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_OnGetMessages value)? onGetMessages,
     TResult? Function(_MessageReceived value)? messageReceived,
     TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
   }) {
     return started?.call(this);
   }
@@ -245,6 +258,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_OnGetMessages value)? onGetMessages,
     TResult Function(_MessageReceived value)? messageReceived,
     TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -308,6 +322,7 @@ class _$OnHubConnectedImpl implements _OnHubConnected {
     required TResult Function(List<MessageEntity> messages) onGetMessages,
     required TResult Function(Message message) messageReceived,
     required TResult Function(String message) messageSent,
+    required TResult Function(bool isActive) onFriendStatusChanged,
   }) {
     return onHubConnected();
   }
@@ -322,6 +337,7 @@ class _$OnHubConnectedImpl implements _OnHubConnected {
     TResult? Function(List<MessageEntity> messages)? onGetMessages,
     TResult? Function(Message message)? messageReceived,
     TResult? Function(String message)? messageSent,
+    TResult? Function(bool isActive)? onFriendStatusChanged,
   }) {
     return onHubConnected?.call();
   }
@@ -336,6 +352,7 @@ class _$OnHubConnectedImpl implements _OnHubConnected {
     TResult Function(List<MessageEntity> messages)? onGetMessages,
     TResult Function(Message message)? messageReceived,
     TResult Function(String message)? messageSent,
+    TResult Function(bool isActive)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (onHubConnected != null) {
@@ -354,6 +371,8 @@ class _$OnHubConnectedImpl implements _OnHubConnected {
     required TResult Function(_OnGetMessages value) onGetMessages,
     required TResult Function(_MessageReceived value) messageReceived,
     required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_OnFriendStatusChanged value)
+        onFriendStatusChanged,
   }) {
     return onHubConnected(this);
   }
@@ -367,6 +386,7 @@ class _$OnHubConnectedImpl implements _OnHubConnected {
     TResult? Function(_OnGetMessages value)? onGetMessages,
     TResult? Function(_MessageReceived value)? messageReceived,
     TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
   }) {
     return onHubConnected?.call(this);
   }
@@ -380,6 +400,7 @@ class _$OnHubConnectedImpl implements _OnHubConnected {
     TResult Function(_OnGetMessages value)? onGetMessages,
     TResult Function(_MessageReceived value)? messageReceived,
     TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (onHubConnected != null) {
@@ -475,6 +496,7 @@ class _$OnGetAllConversationsImpl implements _OnGetAllConversations {
     required TResult Function(List<MessageEntity> messages) onGetMessages,
     required TResult Function(Message message) messageReceived,
     required TResult Function(String message) messageSent,
+    required TResult Function(bool isActive) onFriendStatusChanged,
   }) {
     return onGetAllConversations(conversations);
   }
@@ -489,6 +511,7 @@ class _$OnGetAllConversationsImpl implements _OnGetAllConversations {
     TResult? Function(List<MessageEntity> messages)? onGetMessages,
     TResult? Function(Message message)? messageReceived,
     TResult? Function(String message)? messageSent,
+    TResult? Function(bool isActive)? onFriendStatusChanged,
   }) {
     return onGetAllConversations?.call(conversations);
   }
@@ -503,6 +526,7 @@ class _$OnGetAllConversationsImpl implements _OnGetAllConversations {
     TResult Function(List<MessageEntity> messages)? onGetMessages,
     TResult Function(Message message)? messageReceived,
     TResult Function(String message)? messageSent,
+    TResult Function(bool isActive)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (onGetAllConversations != null) {
@@ -521,6 +545,8 @@ class _$OnGetAllConversationsImpl implements _OnGetAllConversations {
     required TResult Function(_OnGetMessages value) onGetMessages,
     required TResult Function(_MessageReceived value) messageReceived,
     required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_OnFriendStatusChanged value)
+        onFriendStatusChanged,
   }) {
     return onGetAllConversations(this);
   }
@@ -534,6 +560,7 @@ class _$OnGetAllConversationsImpl implements _OnGetAllConversations {
     TResult? Function(_OnGetMessages value)? onGetMessages,
     TResult? Function(_MessageReceived value)? messageReceived,
     TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
   }) {
     return onGetAllConversations?.call(this);
   }
@@ -547,6 +574,7 @@ class _$OnGetAllConversationsImpl implements _OnGetAllConversations {
     TResult Function(_OnGetMessages value)? onGetMessages,
     TResult Function(_MessageReceived value)? messageReceived,
     TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (onGetAllConversations != null) {
@@ -645,6 +673,7 @@ class _$OnGetMessagesImpl implements _OnGetMessages {
     required TResult Function(List<MessageEntity> messages) onGetMessages,
     required TResult Function(Message message) messageReceived,
     required TResult Function(String message) messageSent,
+    required TResult Function(bool isActive) onFriendStatusChanged,
   }) {
     return onGetMessages(messages);
   }
@@ -659,6 +688,7 @@ class _$OnGetMessagesImpl implements _OnGetMessages {
     TResult? Function(List<MessageEntity> messages)? onGetMessages,
     TResult? Function(Message message)? messageReceived,
     TResult? Function(String message)? messageSent,
+    TResult? Function(bool isActive)? onFriendStatusChanged,
   }) {
     return onGetMessages?.call(messages);
   }
@@ -673,6 +703,7 @@ class _$OnGetMessagesImpl implements _OnGetMessages {
     TResult Function(List<MessageEntity> messages)? onGetMessages,
     TResult Function(Message message)? messageReceived,
     TResult Function(String message)? messageSent,
+    TResult Function(bool isActive)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (onGetMessages != null) {
@@ -691,6 +722,8 @@ class _$OnGetMessagesImpl implements _OnGetMessages {
     required TResult Function(_OnGetMessages value) onGetMessages,
     required TResult Function(_MessageReceived value) messageReceived,
     required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_OnFriendStatusChanged value)
+        onFriendStatusChanged,
   }) {
     return onGetMessages(this);
   }
@@ -704,6 +737,7 @@ class _$OnGetMessagesImpl implements _OnGetMessages {
     TResult? Function(_OnGetMessages value)? onGetMessages,
     TResult? Function(_MessageReceived value)? messageReceived,
     TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
   }) {
     return onGetMessages?.call(this);
   }
@@ -717,6 +751,7 @@ class _$OnGetMessagesImpl implements _OnGetMessages {
     TResult Function(_OnGetMessages value)? onGetMessages,
     TResult Function(_MessageReceived value)? messageReceived,
     TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (onGetMessages != null) {
@@ -808,6 +843,7 @@ class _$MessageReceivedImpl implements _MessageReceived {
     required TResult Function(List<MessageEntity> messages) onGetMessages,
     required TResult Function(Message message) messageReceived,
     required TResult Function(String message) messageSent,
+    required TResult Function(bool isActive) onFriendStatusChanged,
   }) {
     return messageReceived(message);
   }
@@ -822,6 +858,7 @@ class _$MessageReceivedImpl implements _MessageReceived {
     TResult? Function(List<MessageEntity> messages)? onGetMessages,
     TResult? Function(Message message)? messageReceived,
     TResult? Function(String message)? messageSent,
+    TResult? Function(bool isActive)? onFriendStatusChanged,
   }) {
     return messageReceived?.call(message);
   }
@@ -836,6 +873,7 @@ class _$MessageReceivedImpl implements _MessageReceived {
     TResult Function(List<MessageEntity> messages)? onGetMessages,
     TResult Function(Message message)? messageReceived,
     TResult Function(String message)? messageSent,
+    TResult Function(bool isActive)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (messageReceived != null) {
@@ -854,6 +892,8 @@ class _$MessageReceivedImpl implements _MessageReceived {
     required TResult Function(_OnGetMessages value) onGetMessages,
     required TResult Function(_MessageReceived value) messageReceived,
     required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_OnFriendStatusChanged value)
+        onFriendStatusChanged,
   }) {
     return messageReceived(this);
   }
@@ -867,6 +907,7 @@ class _$MessageReceivedImpl implements _MessageReceived {
     TResult? Function(_OnGetMessages value)? onGetMessages,
     TResult? Function(_MessageReceived value)? messageReceived,
     TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
   }) {
     return messageReceived?.call(this);
   }
@@ -880,6 +921,7 @@ class _$MessageReceivedImpl implements _MessageReceived {
     TResult Function(_OnGetMessages value)? onGetMessages,
     TResult Function(_MessageReceived value)? messageReceived,
     TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (messageReceived != null) {
@@ -969,6 +1011,7 @@ class _$MessageSentImpl implements _MessageSent {
     required TResult Function(List<MessageEntity> messages) onGetMessages,
     required TResult Function(Message message) messageReceived,
     required TResult Function(String message) messageSent,
+    required TResult Function(bool isActive) onFriendStatusChanged,
   }) {
     return messageSent(message);
   }
@@ -983,6 +1026,7 @@ class _$MessageSentImpl implements _MessageSent {
     TResult? Function(List<MessageEntity> messages)? onGetMessages,
     TResult? Function(Message message)? messageReceived,
     TResult? Function(String message)? messageSent,
+    TResult? Function(bool isActive)? onFriendStatusChanged,
   }) {
     return messageSent?.call(message);
   }
@@ -997,6 +1041,7 @@ class _$MessageSentImpl implements _MessageSent {
     TResult Function(List<MessageEntity> messages)? onGetMessages,
     TResult Function(Message message)? messageReceived,
     TResult Function(String message)? messageSent,
+    TResult Function(bool isActive)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (messageSent != null) {
@@ -1015,6 +1060,8 @@ class _$MessageSentImpl implements _MessageSent {
     required TResult Function(_OnGetMessages value) onGetMessages,
     required TResult Function(_MessageReceived value) messageReceived,
     required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_OnFriendStatusChanged value)
+        onFriendStatusChanged,
   }) {
     return messageSent(this);
   }
@@ -1028,6 +1075,7 @@ class _$MessageSentImpl implements _MessageSent {
     TResult? Function(_OnGetMessages value)? onGetMessages,
     TResult? Function(_MessageReceived value)? messageReceived,
     TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
   }) {
     return messageSent?.call(this);
   }
@@ -1041,6 +1089,7 @@ class _$MessageSentImpl implements _MessageSent {
     TResult Function(_OnGetMessages value)? onGetMessages,
     TResult Function(_MessageReceived value)? messageReceived,
     TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
     required TResult orElse(),
   }) {
     if (messageSent != null) {
@@ -1060,11 +1109,184 @@ abstract class _MessageSent implements ChatEvent {
 }
 
 /// @nodoc
+abstract class _$$OnFriendStatusChangedImplCopyWith<$Res> {
+  factory _$$OnFriendStatusChangedImplCopyWith(
+          _$OnFriendStatusChangedImpl value,
+          $Res Function(_$OnFriendStatusChangedImpl) then) =
+      __$$OnFriendStatusChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isActive});
+}
+
+/// @nodoc
+class __$$OnFriendStatusChangedImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$OnFriendStatusChangedImpl>
+    implements _$$OnFriendStatusChangedImplCopyWith<$Res> {
+  __$$OnFriendStatusChangedImplCopyWithImpl(_$OnFriendStatusChangedImpl _value,
+      $Res Function(_$OnFriendStatusChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isActive = null,
+  }) {
+    return _then(_$OnFriendStatusChangedImpl(
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnFriendStatusChangedImpl implements _OnFriendStatusChanged {
+  const _$OnFriendStatusChangedImpl({required this.isActive});
+
+  @override
+  final bool isActive;
+
+  @override
+  String toString() {
+    return 'ChatEvent.onFriendStatusChanged(isActive: $isActive)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnFriendStatusChangedImpl &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isActive);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnFriendStatusChangedImplCopyWith<_$OnFriendStatusChangedImpl>
+      get copyWith => __$$OnFriendStatusChangedImplCopyWithImpl<
+          _$OnFriendStatusChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int friendId) started,
+    required TResult Function() onHubConnected,
+    required TResult Function(List<ConversationEntity> conversations)
+        onGetAllConversations,
+    required TResult Function(List<MessageEntity> messages) onGetMessages,
+    required TResult Function(Message message) messageReceived,
+    required TResult Function(String message) messageSent,
+    required TResult Function(bool isActive) onFriendStatusChanged,
+  }) {
+    return onFriendStatusChanged(isActive);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int friendId)? started,
+    TResult? Function()? onHubConnected,
+    TResult? Function(List<ConversationEntity> conversations)?
+        onGetAllConversations,
+    TResult? Function(List<MessageEntity> messages)? onGetMessages,
+    TResult? Function(Message message)? messageReceived,
+    TResult? Function(String message)? messageSent,
+    TResult? Function(bool isActive)? onFriendStatusChanged,
+  }) {
+    return onFriendStatusChanged?.call(isActive);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int friendId)? started,
+    TResult Function()? onHubConnected,
+    TResult Function(List<ConversationEntity> conversations)?
+        onGetAllConversations,
+    TResult Function(List<MessageEntity> messages)? onGetMessages,
+    TResult Function(Message message)? messageReceived,
+    TResult Function(String message)? messageSent,
+    TResult Function(bool isActive)? onFriendStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (onFriendStatusChanged != null) {
+      return onFriendStatusChanged(isActive);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_OnHubConnected value) onHubConnected,
+    required TResult Function(_OnGetAllConversations value)
+        onGetAllConversations,
+    required TResult Function(_OnGetMessages value) onGetMessages,
+    required TResult Function(_MessageReceived value) messageReceived,
+    required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_OnFriendStatusChanged value)
+        onFriendStatusChanged,
+  }) {
+    return onFriendStatusChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_OnHubConnected value)? onHubConnected,
+    TResult? Function(_OnGetAllConversations value)? onGetAllConversations,
+    TResult? Function(_OnGetMessages value)? onGetMessages,
+    TResult? Function(_MessageReceived value)? messageReceived,
+    TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
+  }) {
+    return onFriendStatusChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_OnHubConnected value)? onHubConnected,
+    TResult Function(_OnGetAllConversations value)? onGetAllConversations,
+    TResult Function(_OnGetMessages value)? onGetMessages,
+    TResult Function(_MessageReceived value)? messageReceived,
+    TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_OnFriendStatusChanged value)? onFriendStatusChanged,
+    required TResult orElse(),
+  }) {
+    if (onFriendStatusChanged != null) {
+      return onFriendStatusChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnFriendStatusChanged implements ChatEvent {
+  const factory _OnFriendStatusChanged({required final bool isActive}) =
+      _$OnFriendStatusChangedImpl;
+
+  bool get isActive;
+  @JsonKey(ignore: true)
+  _$$OnFriendStatusChangedImplCopyWith<_$OnFriendStatusChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ChatState {
   List<Message> get messages => throw _privateConstructorUsedError;
   ChatViewState get viewState => throw _privateConstructorUsedError;
   int get friendId => throw _privateConstructorUsedError;
   int get conversationId => throw _privateConstructorUsedError;
+  bool get isFriendActive => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatStateCopyWith<ChatState> get copyWith =>
@@ -1080,7 +1302,8 @@ abstract class $ChatStateCopyWith<$Res> {
       {List<Message> messages,
       ChatViewState viewState,
       int friendId,
-      int conversationId});
+      int conversationId,
+      bool isFriendActive});
 }
 
 /// @nodoc
@@ -1100,6 +1323,7 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
     Object? viewState = null,
     Object? friendId = null,
     Object? conversationId = null,
+    Object? isFriendActive = null,
   }) {
     return _then(_value.copyWith(
       messages: null == messages
@@ -1118,6 +1342,10 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
               as int,
+      isFriendActive: null == isFriendActive
+          ? _value.isFriendActive
+          : isFriendActive // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -1134,7 +1362,8 @@ abstract class _$$ChatStateImplCopyWith<$Res>
       {List<Message> messages,
       ChatViewState viewState,
       int friendId,
-      int conversationId});
+      int conversationId,
+      bool isFriendActive});
 }
 
 /// @nodoc
@@ -1152,6 +1381,7 @@ class __$$ChatStateImplCopyWithImpl<$Res>
     Object? viewState = null,
     Object? friendId = null,
     Object? conversationId = null,
+    Object? isFriendActive = null,
   }) {
     return _then(_$ChatStateImpl(
       messages: null == messages
@@ -1170,6 +1400,10 @@ class __$$ChatStateImplCopyWithImpl<$Res>
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
               as int,
+      isFriendActive: null == isFriendActive
+          ? _value.isFriendActive
+          : isFriendActive // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1181,7 +1415,8 @@ class _$ChatStateImpl implements _ChatState {
       {final List<Message> messages = const [],
       this.viewState = ChatViewState.loading,
       this.friendId = -1,
-      this.conversationId = -1})
+      this.conversationId = -1,
+      this.isFriendActive = false})
       : _messages = messages;
 
   final List<Message> _messages;
@@ -1202,10 +1437,13 @@ class _$ChatStateImpl implements _ChatState {
   @override
   @JsonKey()
   final int conversationId;
+  @override
+  @JsonKey()
+  final bool isFriendActive;
 
   @override
   String toString() {
-    return 'ChatState(messages: $messages, viewState: $viewState, friendId: $friendId, conversationId: $conversationId)';
+    return 'ChatState(messages: $messages, viewState: $viewState, friendId: $friendId, conversationId: $conversationId, isFriendActive: $isFriendActive)';
   }
 
   @override
@@ -1219,7 +1457,9 @@ class _$ChatStateImpl implements _ChatState {
             (identical(other.friendId, friendId) ||
                 other.friendId == friendId) &&
             (identical(other.conversationId, conversationId) ||
-                other.conversationId == conversationId));
+                other.conversationId == conversationId) &&
+            (identical(other.isFriendActive, isFriendActive) ||
+                other.isFriendActive == isFriendActive));
   }
 
   @override
@@ -1228,7 +1468,8 @@ class _$ChatStateImpl implements _ChatState {
       const DeepCollectionEquality().hash(_messages),
       viewState,
       friendId,
-      conversationId);
+      conversationId,
+      isFriendActive);
 
   @JsonKey(ignore: true)
   @override
@@ -1242,7 +1483,8 @@ abstract class _ChatState implements ChatState {
       {final List<Message> messages,
       final ChatViewState viewState,
       final int friendId,
-      final int conversationId}) = _$ChatStateImpl;
+      final int conversationId,
+      final bool isFriendActive}) = _$ChatStateImpl;
 
   @override
   List<Message> get messages;
@@ -1252,6 +1494,8 @@ abstract class _ChatState implements ChatState {
   int get friendId;
   @override
   int get conversationId;
+  @override
+  bool get isFriendActive;
   @override
   @JsonKey(ignore: true)
   _$$ChatStateImplCopyWith<_$ChatStateImpl> get copyWith =>

@@ -29,9 +29,10 @@ class AppRouter extends RootStackRouter {
             AutoRoute(page: StoriesRoute.page),
           ],
         ),
-        AutoRoute(
+        CustomRoute(
           page: ChatDetailRoute.page,
-          path: '/chat/:id',
+          transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
+          durationInMilliseconds: 300,
         ),
       ];
 }

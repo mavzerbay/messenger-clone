@@ -7,5 +7,6 @@ class ChatState extends BaseBlocState with _$ChatState {
     @Default(ChatViewState.loading) ChatViewState viewState,
     @Default(-1) int friendId,
     @Default(-1) int conversationId,
+    @Default(false) bool isFriendActive,
   }) = _ChatState;
 }

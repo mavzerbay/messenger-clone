@@ -15,4 +15,8 @@ class ChatEvent extends BaseBlocEvent with _$ChatEvent {
   const factory ChatEvent.messageReceived(Message message) = _MessageReceived;
 
   const factory ChatEvent.messageSent(String message) = _MessageSent;
+
+  const factory ChatEvent.onFriendStatusChanged({
+    required bool isActive,
+  }) = _OnFriendStatusChanged;
 }

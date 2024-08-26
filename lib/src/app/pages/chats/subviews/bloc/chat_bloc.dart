@@ -10,6 +10,7 @@ import 'package:messenger_clone_flutter/src/domain/entities/message_entity.dart'
 
 import '../../../../../domain/repositories/auth_service.dart';
 import '../../../../../shared/hubs/conversation_hub.dart';
+import '../../../../../shared/hubs/presence_hub.dart';
 
 part 'chat_event.dart';
 part 'chat_state.dart';
@@ -41,6 +42,11 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
       _onMessageSent,
       transformer: log(),
     );
+
+    on<_OnFriendStatusChanged>(
+      _onFriendStatusChanged,
+      transformer: log(),
+    );
   }
 
   @override
@@ -51,6 +57,7 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
 
   final _conversationHub = ConversationHub();
   final IAuthService _authService = AuthService.instance;
+  final PresenceHub _socketService = PresenceHub.instance;
 
   Future<void> _onStarted(_Started event, Emitter<ChatState> emit) async {
     await runBlocCatching(
@@ -87,6 +94,17 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
         sentBy: messageEntity.creatorId.toString(),
       );
       add(_MessageReceived(message));
+    });
+    _socketService.emit('update-active-status', true);
+    _socketService.on('friend-status', (data) {
+      final userId = data['id'];
+      if (userId == state.friendId) {
+        add(
+          _OnFriendStatusChanged(
+            isActive: data['isActive'],
+          ),
+        );
+      }
     });
   }
 
@@ -180,6 +198,18 @@ class ChatBloc extends BaseBloc<ChatEvent, ChatState> {
       },
       doOnError: (e) async {
         emit(state.copyWith(viewState: ChatViewState.error));
+      },
+    );
+  }
+
+  Future<void> _onFriendStatusChanged(
+      _OnFriendStatusChanged event, Emitter<ChatState> emit) async {
+    await runBlocCatching(
+      action: () async {
+        emit(state.copyWith(isFriendActive: event.isActive));
+      },
+      doOnError: (e) async {
+        emit(state.copyWith(isFriendActive: false));
       },
     );
   }

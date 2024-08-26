@@ -58,7 +58,6 @@ class ChatDetailRoute extends _i8.PageRouteInfo<ChatDetailRouteArgs> {
             userId: userId,
             chatName: chatName,
           ),
-          rawPathParams: {'id': userId},
           initialChildren: children,
         );
 
